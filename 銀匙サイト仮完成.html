@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>銀の匙 | ゆる〜く楽しむ関学中心の料理サークル</title>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --main-color: #e67e22; /* 美味しそうなオレンジ */
+            --bg-color: #fffaf5;  /* 優しいクリーム色の背景 */
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'Zen Kaku Gothic New', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* --- ナビゲーションバー --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-sizing: border-box;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+        }
+
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            border-radius: 5px;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            letter-spacing: 0.1em;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: white;
+            font-size: 0.9rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* --- メインビジュアル（全画面スライドショー） --- */
+        .hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    /* 1周を24秒（1枚6秒）に短縮 */
+    animation: slideshow 24s infinite; 
+}
+
+/* 4枚の画像指定：delayを6秒刻みに修正 */
+.slide:nth-child(1) {
+    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('images/top_gyoza.png');
+    animation-delay: 0s;
+}
+.slide:nth-child(2) {
+    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('images/top_cook1.png');
+    animation-delay: 6s; 
+}
+.slide:nth-child(3) {
+    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('images/top_eat.png');
+    animation-delay: 12s; 
+}
+.slide:nth-child(4) {
+    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('images/top_frenchtoast.png');
+    animation-delay: 18s;
+    background-position: center top; 
+}
+
+/* 24秒用にタイミング（％）を調整 */
+@keyframes slideshow {
+    0% { opacity: 0; transform: scale(1.05); }
+    8% { opacity: 1; transform: scale(1); }    /* フェードイン */
+    20% { opacity: 1; }                         /* 表示維持 */
+    25% { opacity: 0; }                         /* フェードアウト */
+    100% { opacity: 0; }
+}
+
+        .hero-text {
+            position: relative;
+            z-index: 10;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            margin: 0;
+            text-shadow: 0 0 20px rgba(0,0,0,0.8);
+        }
+
+        /* --- コンテンツ部分 --- */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        section {
+            margin-bottom: 80px;
+            text-align: center;
+        }
+
+        h2 {
+            border-bottom: 2px solid var(--main-color);
+            display: inline-block;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--main-color);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.8rem;
+            color: #888;
+        }
+.hero-text p {
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+            margin-top: 10px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 100px 20px;
+        }
+
+        section {
+            margin-bottom: 100px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            border-bottom: 3px solid var(--main-color);
+            display: inline-block;
+            padding-bottom: 10px;
+            margin-bottom: 50px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card h3 {
+            color: var(--main-color);
+            font-size: 1.5rem;
+            margin-top: 0;
+        }
+
+        /* インスタ風ボタン */
+        .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: white;
+            padding: 18px 50px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(220, 39, 67, 0.3);
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 25px rgba(220, 39, 67, 0.4);
+        }
+
+        footer {
+            text-align: center;
+            padding: 80px 20px;
+            background: #eee;
+            color: #666;
+        } 
+        @media (max-width: 600px) {
+            .navbar {
+                height: auto; /* 高さを自動に */
+                padding: 10px;
+                flex-direction: column; /* 縦に並べる */
+                background: rgba(0, 0, 0, 0.8); /* スマホは見やすく背景を濃く */
+            }
+
+            .logo-wrapper {
+                margin-bottom: 5px;
+                gap: 8px;
+            }
+
+            .logo-img {
+                height: 35px; /* ロゴを少し小さく */
+            }
+
+            .logo-text {
+                font-size: 1.1rem; /* タイトルを1行に収まるサイズに */
+                letter-spacing: 0;
+            }
+
+            .nav-menu {
+                gap: 15px;
+                padding-bottom: 5px;
+            }
+
+            .nav-menu a {
+                font-size: 0.8rem; /* メニュー文字を小さく */
+            }
+
+            /* ヒーローエリアの文字サイズも調整 */
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            .hero-text p {
+                font-size: 1rem;
+            }
+        }   
+</style> </head>
+<body>
+
+<nav class="navbar">
+    <div class="logo-wrapper">
+        <img src="images/logo.png" alt="銀の匙 ロゴ" class="logo-img">
+        <span class="logo-text">銀の匙　関学中心の料理サークル</span>
+    </div>
+    
+    <ul class="nav-menu">
+        <li><a href="#about">About</a></li>
+        <li><a href="#activity">Activity</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<header class="hero">
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="hero-text">
+        <h1>銀の匙</h1> 
+        <p>〜ゆる〜く楽しむ料理サークルです〜</p>
+    </div>
+</header>
+
+<div class="container">
+    <section id="about">
+        <h2>About Us</h2>
+        <p>月に１回程度、土曜日に活動しています。<br>
+        初心者から料理好きまで、誰でも大歓迎です！<br>
+        みんなでワイワイ、美味しい思い出を作りませんか？<br>
+        一度参加してみてください。ゆるーく始まって、ゆるーく終わります（笑）それが銀匙！！</p>
+    </section>
+
+    <section id="activity">
+        <h2>Activities</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>定期活動</h3>
+                <p>毎週第２または第３土曜日<br>９〜１５時</p>
+            </div>
+            <div class="card">
+                <h3>参加費</h3>
+                <p>１回 １０００円程度<br>（材料費込み）</p>
+            </div>
+        </div>
+    </section>
+    <section id="contact">
+        <h2>Join Us!</h2>
+        <p>日々の活動風景や、次回のメニュー予告はInstagramでチェック！<br>
+        DMでの質問や参加申し込みも受け付けています。</p>
+        
+        <a href="https://www.instagram.com/kangaku_ryouri/" class="btn" target="_blank">Instagramを見に行く</a>
+    </section>
+
+    
